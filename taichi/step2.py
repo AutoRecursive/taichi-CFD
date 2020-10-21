@@ -7,7 +7,7 @@ dx = 2 / (nx - 1)
 nt = 20
 sigma = .5
 dt = sigma * dx
-c = 1
+
 
 u = ti.field(dtype=float, shape=(nx))
 un = ti.field(dtype=float, shape=(nx))
@@ -27,7 +27,7 @@ def propagate():
         un[i] = u[i]
 
     for i in range(1, nx):
-        u[i] = un[i] - c * dt / dx * (un[i] - un[i-1])
+        u[i] = un[i] - un[i] * dt / dx * (un[i] - un[i-1])
 
     #    print(u[i])
 
